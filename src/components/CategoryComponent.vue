@@ -83,7 +83,7 @@ export default{
         background-color:#f2fce4;
         margin-right: 20px;
         color: black;
-        padding:40px 40px;
+        padding:50px 40px;
         text-align: center;
         border-radius: 10px;
     }
@@ -94,6 +94,6 @@ export default{
         background-position: center;
     }
     p{
-        color: #d8ddd0;
+        color: #c6cabf;
     }
 </style>
