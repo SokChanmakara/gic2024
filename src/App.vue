@@ -1,11 +1,11 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 
 </script>
 
 <template>
  
-
+  <div>This is my first vuejs project</div>
   <RouterView />
 </template>
 
