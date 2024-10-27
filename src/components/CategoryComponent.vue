@@ -61,6 +61,7 @@ export default{
 </script>
 
 <style scoped>
+/*TODO: Haven't style the component yet*/
     .container{
         display:flex;
         flex-direction: row;
