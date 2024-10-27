@@ -1,14 +1,24 @@
-<script setup>
-import { RouterView } from 'vue-router'
-
-</script>
-
-<template>
- 
-  <div>This is my first vuejs project</div>
+<template> 
+<!-- <ButtonComponent /> -->
+ <CategoryComponent />
+ <PromotionComponent />
   <RouterView />
 </template>
 
-<style scoped>
 
+  <script setup>
+  import { RouterView } from 'vue-router'
+  import CategoryComponent from './components/CategoryComponent.vue';
+  import PromotionComponent from './components/PromotionComponent.vue';
+  // import ButtonComponent from './components/ButtonComponent.vue';
+  </script>
+
+<style scoped>
+template{
+  box-sizing: border-box;
+  margin:none;
+  padding:none;
+  overflow:none;
+ 
+}
 </style>
