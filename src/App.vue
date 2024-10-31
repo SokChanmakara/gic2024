@@ -91,14 +91,14 @@
              url: "/promotions/1",
           },
           {
-             title: "Everyday Fresh and Clean with Our Products",
+             title: "Make your breakfast Healthy and Easy",
              color: "#F0E9D7",
              image: "../src/assets/Promotion/milk.png",
              buttonColor: "#42B678",
              url: "/promotions/1",
           },
           {
-             title: "Everyday Fresh and Clean with Our Products",
+             title: "The best Organic Products Online, the product",
              color: "#F0E9D7",
              image: "../src/assets/Promotion/vege.png",
              buttonColor: "#42B678",

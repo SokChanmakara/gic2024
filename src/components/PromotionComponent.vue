@@ -7,10 +7,10 @@
         <div class="content">
             <div class="wrapper text">
                 <div class="dpt">
-                    <h1>Everyday Fresh & Clean with Our Products</h1>
+                    <h1>{{ title }}</h1>
                 </div>
                 <div class="btn">
-                    <button>
+                    <button @click="shopNow(title)">
                         Shop Now
                         <i class="ri-arrow-right-line"></i>
                     </button>
@@ -30,7 +30,12 @@
 <script>
 export default {
     name: 'PromotionComponent',
-    props: ["title", "color", "image", "buttonColor", "url"]
+    props: ["title", "color", "image", "buttonColor", "url"],
+    methods:{
+        shopNow(title){
+            alert("Let's Shop: " + title);
+        }
+    }
 }
 </script>
 
