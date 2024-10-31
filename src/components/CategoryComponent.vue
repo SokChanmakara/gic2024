@@ -1,87 +1,98 @@
 <template>
-    <div class="container">
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
+    <div class="container" v-for="category in categories" :key="category.name">
+        <div class="items" :style="{ backgroundColor: '#' + category.color }">
+            <img :src="category.image" alt="burger">
+            <h3>{{ category.name }}</h3>
+            <p>{{ category.productCount }} items</p>
         </div>
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
-        </div>
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
-        </div>
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
-        </div>
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
-        </div>
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
-        </div>
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
-        </div>
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
-        </div>
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
-        </div>
-        <div class="items">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="burger">
-            <h3>Cake & Milk</h3>
-            <p>14 items</p>
-        </div>
-        
     </div>
 </template>
 
 <script>
-export default{
-    name: 'CategoryComponent'
+export default {
+    name: 'CategoryComponent',
+    data() {
+        return {
+            categories: [
+                {
+                    name: 'cake & Milk',
+                    productCount: 14,
+                    color: "f2fce4",
+                    image: "../src/assets/Category/burger.png",
+                },
+                {
+                    name: 'Peach',
+                    productCount: 17,
+                    color: "fffceb",
+                    image: "../src/assets/Category/peach.png",
+                },
+                {
+                    name: 'Organic Kiwi',
+                    productCount: 21,
+                    color: "fecffec",
+                    image: "../src/assets/Category/kiwi.png",
+                },
+                {
+                    name: 'Red Apple',
+                    productCount: 68,
+                    color: "feefea",
+                    image: "../src/assets/Category/apple.png",
+                },
+                {
+                    name: 'Snack',
+                    productCount: 34,
+                    color: "fff3eb",
+                    image: "../src/assets/Category/snack.png",
+                },
+                {
+                    name: 'Black Plum',
+                    productCount: 25,
+                    color: "fff3ff",
+                    image: "../src/assets/Category/plum.png",
+                },{
+                    name: 'Vegetables',
+                    productCount: 65,
+                    color: "f2fce4",
+                    image: "../src/assets/Category/cab.png",
+                },
+                {
+                    name: 'Headphone',
+                    productCount: 33,
+                    color: "fffceb",
+                    image: "../src/assets/Category/headphone.png",
+                },
+                {
+                    name: 'cake & Milk',
+                    productCount: 54,
+                    color: "f2fce4",
+                    image: "../src/assets/Category/cracker.png",
+                },
+                {
+                    name: 'Orange',
+                    productCount: 63,
+                    color: "fff3ff",
+                    image: "../src/assets/Category/orange.png",
+                },
+            ]
+        };
+    }
 }
 </script>
 
 <style scoped>
 /*TODO: Haven't style the component yet*/
     .container{
-        display:flex;
+        display:inline-flex;
         flex-direction: row;
-        overflow: none;
-        margin-top:0;
-        position:fixed;
-        top:20px;
-        right: 0px;
-        left:20px;
-        width: 100%;
-        z-index:1000;
+       
     }
     .items{
         display:flex;
         flex-direction: column;
         justify-content: center;
         align-content: center;
-
+        margin:8px;
         background-color:#f2fce4;
-        margin-right: 20px;
         color: black;
         padding:50px 40px;
         text-align: center;
