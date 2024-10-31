@@ -19,49 +19,7 @@
             <div class="wrapper image">
                 <img
                     id="image"
-                    src="https://images.unsplash.com/photo-1439127989242-c3749a012eac?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="fruit"
-                />
-            </div>
-        </div>
-        
-        <div class="content">
-            <div class="wrapper text">
-                <div class="dpt">
-                    <h1>Everyday Fresh & Clean with Our Products</h1>
-                </div>
-                <div class="btn">
-                    <button>
-                        Shop Now
-                        <i class="ri-arrow-right-line"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="wrapper image">
-                <img
-                    id="image"
-                    src="https://images.unsplash.com/photo-1439127989242-c3749a012eac?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="fruit"
-                />
-            </div>
-        </div>
-        
-        <div class="content">
-            <div class="wrapper text">
-                <div class="dpt">
-                    <h1>Everyday Fresh & Clean with Our Products</h1>
-                </div>
-                <div class="btn">
-                    <button>
-                        Shop Now
-                        <i class="ri-arrow-right-line"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="wrapper image">
-                <img
-                    id="image"
-                    src="https://images.unsplash.com/photo-1439127989242-c3749a012eac?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    :src = "image"
                     alt="fruit"
                 />
             </div>
@@ -71,26 +29,25 @@
 
 <script>
 export default {
-    name: 'PromotionComponent'
+    name: 'PromotionComponent',
+    props: ["title", "color", "image", "buttonColor", "url"]
 }
 </script>
 
 <style scoped>
 
 .container {
-    display: flex;
-    position: relative;
-    right:400px;
+    display: inline-flex;
+    flex-direction: row;
     justify-content: space-between;
-    gap: 40px; /* Space between content elements */
-    padding: 20px 70px; /* Optional padding around the container */
-    margin:0;
+    padding:5px;
+    margin-top:10px;
 }
 
 .content {
     display: flex;
     justify-content: center;
-    align-items: center; /* Changed from align-content to align-items */
+    align-items: center; 
     background-color: #f0e8d5;
     color: black;
     width: 600px;
