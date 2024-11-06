@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="items">
+        <div class="items" :style="{ backgroundColor: color }">
             <img :src="image">
             <h3>{{ name }}</h3>
             <p>{{ productCount }} Items</p>
@@ -10,10 +10,10 @@
 </template>
 
 <script>
-export default{
+export default {
     name: 'CategoryComponent',
-        props: ["name", "productCount", "image"]
-    }
+    props: ["name", "productCount","color", "image"]
+}
 </script>
 
 <style scoped>

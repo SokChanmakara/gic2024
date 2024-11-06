@@ -4,13 +4,13 @@
         rel="stylesheet"
     />
     <div class="container">
-        <div class="content">
+        <div class="content" :style="{backgroundColor: color}">
             <div class="wrapper text">
                 <div class="dpt">
                     <h1>{{ title }}</h1>
                 </div>
                 <div class="btn">
-                    <button @click="shopNow(title)">
+                    <button @click="shopNow(title)" :style="{ backgroundColor: buttonColor,color:'white',padding:'8px',border:0,borderRadius:'6px' }">
                         Shop Now
                         <i class="ri-arrow-right-line"></i>
                     </button>
