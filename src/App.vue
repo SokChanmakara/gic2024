@@ -8,7 +8,8 @@
 
   <script>
   // import { RouterView } from 'vue-router'
-  import axios from 'axios';
+  import { mapState } from 'pinia';
+  import { useProductStore } from './stores/product';
   import CategoryComponent from './components/CategoryComponent.vue';
   import PromotionComponent from './components/PromotionComponent.vue';
   // import ButtonComponent from './components/ButtonComponent.vue';
@@ -21,44 +22,32 @@
     }, 
     data(){
       return{
-        categories: [],
-        promotions: []
+        currentGroupName: "Snacks"
       }
     },
-    methods: {
-      async fetchCategories() {
-      try {
-        const response = await axios.get('http://localhost:3000/api/categories');
-        this.categories = response.data;
-      } catch (error) {
-        console.error('Error fetching categories:', error);
-        this.categories = [];
-      }
-    },
-    async fetchPromotions() {
-      try {
-        const response = await axios.get('http://localhost:3000/api/promotions');
-        this.promotions = response.data;
-      } catch (error) {
-        console.error('Error fetching promotions:', error);
-        this.promotions = []; 
-      }
+    computed: {
+      ...mapState(useProductStore, {
+        categories: "categories",
+        promotions: "promotions",
+        products: "products",
+        groups: "groups",
+
+        categories(store) {
+          const category = store.getCategoriesByGroup(this.currentGroupName)
+          console.log("Categories by group name");
+          console.log(category);
+          return category;
+        },
+
+        popularProducts(store){
+          const products = store.getProductsByGroup()
+          console.log("Popular products")
+          console.log(products)
+          return products;
+        }
+      })
     }
-  },
-  async mounted() {
-    try {
-      await Promise.all([
-        this.fetchCategories(),
-        this.fetchPromotions()
-      ]);
-    } catch (error) {
-      console.error('Error during data initialization:', error);
-    }
-  },
-  mounted() {
-    this.fetchCategories();
-    this.fetchPromotions();
-  }
+    
 
     }
   

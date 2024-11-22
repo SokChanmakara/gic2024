@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3000'
+
 export const useProductStore = defineStore('product', {
     state: () => ({
         groups: [],
@@ -10,28 +10,23 @@ export const useProductStore = defineStore('product', {
         products: [],
     }),
     getters: {
-        getCategoriesByGroup: (state) => {
-            return (groupName) => state.categories.find((category) => category.group === groupName)
-        },
-        getProductsByGroup:(state) => {
-            const groupCategories = state.categories.filter(category => category.group === groupName);
-            return state.products.filter(product => 
-                groupCategories.some(category => 
-                    category.id === product.categoryId
-                )
-            )
-        },
-        getProductsByCategory: (state) => {
-            return (categoryId) => 
-                state.products.filter(product =>
-                    product.categoryId === categoryId
-                );
-        },
-        getPopularProducts: (state) => {
-               return state.products.filter(product => 
-                    product.countSold > 10
-                );
-        }
+        getCategoriesByGroup(groupName) {
+            return (groupName) => this.categories.find((category) => category.group === groupName)
+       },
+       getProductsByGroup(groupName) {
+            return (groupName) => this.products.find((product) => product.group === groupName)
+       },
+       getProductsByCategory(categoryId) {
+            return (categoryId) => this.products.find((product) => product.categoryId === categoryId)
+       },
+       getPopularProducts() {
+            const countPopular = 20;
+            console.log("Getting Popular")
+            const popular = () => this.products.find((product) => product.countSold > countPopular)
+            console.log(popular)
+            return popular
+       },
+  
     },
     actions: {
         async fetchCategories(){
@@ -61,6 +56,17 @@ export const useProductStore = defineStore('product', {
                 ]);
             } catch (error) {
                 console.error('Error during data initialization',error);
+            }
+        },
+
+        async fetchGroups(){
+            try{
+                const response = await axios.get("http://localhost:3000/api/groups");
+                this.groups = response.data;
+            }
+            catch{
+                console.error("Error fetching groups", error);
+                this.groups = [];
             }
         }
     },
