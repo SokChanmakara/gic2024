@@ -1,8 +1,8 @@
 <template> 
 <!-- <ButtonComponent /> -->
- <CategoryComponent v-for="category in categories" :name="category.name" :productCount="category.productCount" :image="category.image" :color="category.color" :key="category.name"/>
+ <CategoryComponent v-for="category in categories" :name="category.name" :productCount="category.productCount" :image="category.image" :color="category.color" :key="category"/>
  <PromotionComponent v-for="promotion in promotions" :title="promotion.title" :color="promotion.color" :image="promotion.image" :buttonColor="promotion.buttonColor" :url="promotion.url" :key="promotion.title"></PromotionComponent>
-  <RouterView />
+
 </template>
 
 
@@ -20,6 +20,14 @@
       PromotionComponent,
       // ButtonComponent
     }, 
+    setup() {
+      const productStore = useProductStore();
+
+      return {
+        productStore
+      }
+    },
+
     data(){
       return{
         currentGroupName: "Snacks"
@@ -32,12 +40,12 @@
         products: "products",
         groups: "groups",
 
-        categories(store) {
-          const category = store.getCategoriesByGroup(this.currentGroupName)
-          console.log("Categories by group name");
-          console.log(category);
-          return category;
-        },
+        // categories(store) {
+        //   const category = store.getCategoriesByGroup(this.currentGroupName)
+        //   console.log("Categories by group name");
+        //   console.log(category);
+        //   return category;
+        // },
 
         popularProducts(store){
           const products = store.getProductsByGroup()
@@ -46,9 +54,12 @@
           return products;
         }
       })
+    },
+    async mounted() {
+      await this.productStore.fetchCategories();
+      await this.productStore.fetchPromotions();
     }
-    
-
+  
     }
   
   </script>

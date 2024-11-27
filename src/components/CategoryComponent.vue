@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="items" :style="{ backgroundColor: color }">
-            <img :src="image">
+            <img :src="'http://localhost:3000/'+image">
             <h3>{{ name }}</h3>
             <p>{{ productCount }} Items</p>
         </div>

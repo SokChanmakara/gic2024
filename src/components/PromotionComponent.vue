@@ -10,7 +10,7 @@
                     <h1>{{ title }}</h1>
                 </div>
                 <div class="btn">
-                    <button @click="shopNow(title)" :style="{ backgroundColor: buttonColor,color:'white',padding:'8px',border:0,borderRadius:'6px' }">
+                    <button @click="shopNow(title)" :style="{ backgroundColor: '#' + buttonColor,color:'white',padding:'8px',border:0,borderRadius:'6px' }">
                         Shop Now
                         <i class="ri-arrow-right-line"></i>
                     </button>
@@ -19,7 +19,7 @@
             <div class="wrapper image">
                 <img
                     id="image"
-                    :src = "image"
+                    :src = "'http://localhost:3000/' + image"
                     alt="fruit"
                 />
             </div>
