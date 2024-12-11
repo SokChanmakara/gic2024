@@ -4,26 +4,28 @@
         rel="stylesheet"
     />
     <div class="container">
-        <div class="content" :style="{backgroundColor: color}">
-            <div class="wrapper text">
-                <div class="dpt">
-                    <h1>{{ title }}</h1>
+        <RouterLink to="/poducts/:productId">
+            <div class="content" :style="{backgroundColor: color}">
+                <div class="wrapper text">
+                    <div class="dpt">
+                        <h1>{{ title }}</h1>
+                    </div>
+                    <div class="btn">
+                        <button @click="shopNow(title)" :style="{ backgroundColor: '#' + buttonColor,color:'white',padding:'8px',border:0,borderRadius:'6px' }">
+                            Shop Now
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="btn">
-                    <button @click="shopNow(title)" :style="{ backgroundColor: '#' + buttonColor,color:'white',padding:'8px',border:0,borderRadius:'6px' }">
-                        Shop Now
-                        <i class="ri-arrow-right-line"></i>
-                    </button>
+                <div class="wrapper image">
+                    <img
+                        id="image"
+                        :src = "'http://localhost:3000/' + image"
+                        alt="fruit"
+                    />
                 </div>
             </div>
-            <div class="wrapper image">
-                <img
-                    id="image"
-                    :src = "'http://localhost:3000/' + image"
-                    alt="fruit"
-                />
-            </div>
-        </div>
+        </RouterLink>
     </div>
 </template>
 
@@ -78,8 +80,8 @@ export default {
 }
 
 #image {
-    width: 100%; /* Adjusted to make the image responsive */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; 
+    height: auto; 
 }
 
 </style>

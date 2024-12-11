@@ -1,4 +1,5 @@
 <template> 
+    <ShowCaseComponent/>
     <MenuComponent
       :title="'Feature Products'"
       :navList="groups"
@@ -43,6 +44,7 @@
       import PromotionComponent from '../components/PromotionComponent.vue';
       import MenuComponent from '../components/MenuComponent.vue';
       import ProductComponent from '../components/ProductComponent.vue';
+      import ShowCaseComponent from '@/components/ShowCaseComponent.vue';
       // import ButtonComponent from './components/ButtonComponent.vue';
       export default {
         name: 'App',
@@ -51,6 +53,7 @@
           PromotionComponent,
           MenuComponent,
           ProductComponent,
+          ShowCaseComponent,
           // ButtonComponent
         }, 
         setup() {

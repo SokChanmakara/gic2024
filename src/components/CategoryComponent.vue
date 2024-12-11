@@ -1,18 +1,24 @@
 <template>
-    <div class="container">
-        <div class="items" :style="{ backgroundColor: color }">
-            <img :src="'http://localhost:3000/'+image">
-            <h3>{{ name }}</h3>
-            <p>{{ productCount }} Items</p>
+        <div class="container">
+            <RouterLink to="/categories/:categoryId">
+                <div class="items" :style="{ backgroundColor: color }">
+                    <img :src="'http://localhost:3000/'+image">
+                    <h3>{{ name }}</h3>
+                    <p>{{ productCount }} Items</p>
+                </div>
+            </RouterLink>
+            
         </div>
-        
-    </div>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router';
 export default {
     name: 'CategoryComponent',
-    props: ["name", "productCount","color", "image"]
+    props: ["name", "productCount","color", "image"],
+    components:{
+        RouterLink
+    }
 }
 </script>
 

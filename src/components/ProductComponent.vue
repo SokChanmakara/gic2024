@@ -1,46 +1,49 @@
 <template>
     <div class="container">
-      <div v-show="checkPromoStatus" class="promotion-status">
-        <p class="lato-regular">{{ showPromoStatus }}</p>
-      </div>
-      <img :src="imgPath" alt="">
-      <div class="card-title">
-        <p class="lato-regular gray">Hodo Foods</p>
-          <h4 class="quicksand-regular label">
-            {{ 
-              productName || "Seeds of Change Organic Quinoa, Brown, & Red Rice" 
-            }}
-          </h4>  
-        
-        <div class="rating">
-          <template v-for="n in rating" :key="n">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 24 24" fill="#FDC040"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
-          </template>
-          <template v-for="n in 5-rating" :key="n">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 24 24" fill="#CDCDCD"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
-          </template>
-          <p class="lato-regular gray">{{ `(${rating}.0)` }}</p>
+      <RouterLink to="/poducts/:productId">
+
+        <div v-show="checkPromoStatus" class="promotion-status">
+          <p class="lato-regular">{{ showPromoStatus }}</p>
         </div>
-    
-        <p class="lato-regular gray">500 grams</p>
-    
-        <div class="card-price">
-          <div>
-            <template v-if="discountPercent > 0" >
-            <h2 class="quicksand-regular price-color">{{`$${discountedPrice}`}}</h2>
-            <p class="quicksand-regular"><del>{{ `$${price}` }}</del></p>
-            </template>
-            <h2 v-else class="quicksand-regular price-color">{{`$${price}`}}</h2>
-          </div>
-    
-          <div class="add-button">
-            <button @click="btnAddProduct" v-if="!addedClicked" >Add <span>+</span></button>
-    
-            <input v-else type="number" name="" id="" min="0" max="999" value="0"  v-model="amount">
-          </div>
-        </div>
+        <img :src="imgPath" alt="">
+        <div class="card-title">
+          <p class="lato-regular gray">Hodo Foods</p>
+            <h4 class="quicksand-regular label">
+              {{ 
+                productName || "Seeds of Change Organic Quinoa, Brown, & Red Rice" 
+              }}
+            </h4>  
           
-      </div>
+          <div class="rating">
+            <template v-for="n in rating" :key="n">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 24 24" fill="#FDC040"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+            </template>
+            <template v-for="n in 5-rating" :key="n">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 24 24" fill="#CDCDCD"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+            </template>
+            <p class="lato-regular gray">{{ `(${rating}.0)` }}</p>
+          </div>
+      
+          <p class="lato-regular gray">500 grams</p>
+      
+          <div class="card-price">
+            <div>
+              <template v-if="discountPercent > 0" >
+              <h2 class="quicksand-regular price-color">{{`$${discountedPrice}`}}</h2>
+              <p class="quicksand-regular"><del>{{ `$${price}` }}</del></p>
+              </template>
+              <h2 v-else class="quicksand-regular price-color">{{`$${price}`}}</h2>
+            </div>
+      
+            <div class="add-button">
+              <button @click="btnAddProduct" v-if="!addedClicked" >Add <span>+</span></button>
+      
+              <input v-else type="number" name="" id="" min="0" max="999" value="0"  v-model="amount">
+            </div>
+          </div>
+            
+        </div>
+      </RouterLink>
         
     </div>
     </template>
