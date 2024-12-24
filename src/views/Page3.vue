@@ -3,21 +3,31 @@
         <div class="sidebar">
             <h1>Menu</h1>
             <ul>
-                <li><a href="#">Section 1</a></li>
-                <li><a href="#">Section 2</a></li>
-                <li><a href="#">Section 3</a></li>
-                <li><a href="#">Section 4</a></li>
+                <li @click="setSection(1)"><a href="#">Section 1</a></li>
+                <li @click="setSection(2)"><a href="#">Section 2</a></li>
+                <li @click="setSection(3)"><a href="#">Section 3</a></li>
+                <li @click="setSection(4)"><a href="#">Section 4</a></li>
             </ul>
         </div>
         <div class="content">
             <h1>Welcome to Page 3</h1>
+            <h3>This is section {{selectedSection }} of page 3</h3>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-
+    data(){
+        return{
+            selectedSection:1
+        }
+    },
+    methods:{
+        setSection(section){
+            this.selectedSection = section
+        }
+    }
 }
 </script>
 
@@ -41,6 +51,7 @@ export default {
     }
     .content{
         display:flex;
+        flex-direction: column;
         position:absolute;
         right:45%;
         top:50%;
