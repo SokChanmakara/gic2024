@@ -1,19 +1,54 @@
-<script setup>
-import { RouterLink,RouterView} from 'vue-router'
-
+<script>
+import { usePageStore } from './stores/pageStore';
+export default {
+    setup(){
+        const store = usePageStore();
+        return {
+            store,
+        }
+    },
+    data(){
+        return{
+            message: "",
+        }
+    },
+    methods:{
+        passMessage(toPage){
+            this.store.lastPage = this.currentPage;
+            this.store.pages[this.currentPage] = this.message;
+            this.message = '';
+        },
+    },
+    computed:{
+        currentPage(){
+            return this.$route.params.pageNumber;
+        }
+    }
+}
 </script>
 
 <template>
   <div class="header">
     <h1>Header</h1>
     <div class="btn-container">
-      <router-link to="/Page1" class="btn" active-class="active">Page1</router-link>
-      <router-link to="/Page2" class="btn" active-class="active">Page2</router-link>
-      <router-link to="/Page3" class="btn" active-class="active">Page3</router-link>
+      <template v-for="n in 3" :key="n">
+        <router-link :to="`/page/${n}`" class="btn" active-class="active" @click="passMessage(n)"> Page {{ n }}</router-link>
+      </template>
     </div>
   </div>
-  <router-view></router-view>
-
+  <div class="sidebar">
+    <h1>Menu</h1>
+    <template v-for="n in 4" :key="n">
+      <router-link :to="`/page/${$route.params.pageNumber}/section/${n}`" class="section-menu">Section {{ n }}</router-link>
+    </template>
+  </div>
+  <div class="message-section">
+    <router-view></router-view> 
+    <div>
+      <p>Message</p>
+      <input type="text" v-model="message">
+    </div>
+  </div>
   <div class="footer">
     <h1>Footer</h1>
   </div>
@@ -45,5 +80,22 @@ import { RouterLink,RouterView} from 'vue-router'
 }
 .active{
   color:red;
+}
+.sidebar{
+    padding:1rem;
+    display:flex;
+    flex-direction: column;
+}
+.section-menu{
+    text-decoration: none;
+    list-style: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:24px;
+    color:rgb(53, 52, 52);
+    font-weight:300 ;
+}
+.message-section{
+    display:flex;
+    justify-content: center;
 }
 </style>
